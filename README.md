@@ -17,3 +17,6 @@
 
 ## Entity Relationship Diagram
 ![App Entity Diagram](./assets/entity-diagram.png)
+
+***Caution!***
+***both of domain modeling and entity relation diagram probably might change on the upcoming days.***
