@@ -1,6 +1,6 @@
 -- DROP TABLE IF EXISTS student_laptop, laptops, student_scholarship, scholarships, programs, program_requirement, user, roles, role_crud;
 
-DROP TABLE IF EXISTS laptops;
+DROP TABLE IF EXISTS laptops, roles, users;
 -- CREATE TABLE IF NOT EXISTS student_laptop(
 --     std_id INTEGER, 
 --     scholarship_id VARCHAR(255),
@@ -27,6 +27,24 @@ CREATE TABLE IF NOT EXISTS laptops (
     availability BOOLEAN,
     PRIMARY KEY (id, serial_no)
 );
+
+CREATE TABLE IF NOT EXISTS roles (
+    id SERIAL,
+    name VARCHAR(255) PRIMARY KEY
+    );
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255),
+    role_name VARCHAR(255),
+    password VARCHAR(255),
+    email VARCHAR(255),
+    name VARCHAR(255),
+    CONSTRAINT fk_role_name
+      FOREIGN KEY(role_name) 
+	  REFERENCES roles (name)
+);
+
 
 -- CREATE TABLE IF NOT EXISTS student_scholarship (
 --     student_id INTEGER,
@@ -70,10 +88,7 @@ CREATE TABLE IF NOT EXISTS laptops (
 --     name VARCHAR(255)
 -- );
 
--- CREATE TABLE IF NOT EXISTS roles (
---     role_id SERIAL,
---     role_name VARCHAR(255)
--- );
+
 
 -- CREATE TABLE IF NOT EXISTS role_crud (
 --     role_id VARCHAR(255),
