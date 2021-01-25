@@ -44,7 +44,7 @@ class Laptop {
     }
   }
 
-  async change(data) {
+  async update(data) {
     let SQL = `UPDATE laptops SET id=$1, serial_no=$2, brand=$3, cpu=$4, ram=$5, storage=$6, storage_type=$7, carry_case=$8, external_mouse=$9, power_cable=$10, charger=$11, display_resolution=$12, model=$13, availability=$14 WHERE id = $1 RETURNING *`;
     let VALUES = [
       data.id,

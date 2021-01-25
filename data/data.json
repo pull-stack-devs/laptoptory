@@ -1,0 +1,301 @@
+{
+    "students": [
+        {"info": {
+            "LeadId": 127143,
+            "Email": "798561301@luminuseducation.com",
+            "NationalityIDNumber": "9952029511",
+             "_comment1":"the national Id ",
+            "StudentNumber1": "216709353",
+            "_comment2":"this is the Id ",
+            "FirstName": "Sarah",
+            "FathersName": "Mazen",
+            "GrandfathersName": "Mahmoud",
+            "LastName": "Manasra",
+            "FirstNameArabic": "ساره",
+            "FathersNameArabic": "مازن",
+            "GrandfathersNameArabic": "محمود",
+            "LastNameArabic": "مناصره",
+            "DateOfBirth": "1995-12-27T00:00:00+02:00",
+            "UNHCRNumber": null,
+            "JordanianSecurityIDNumber": null,
+            "_comment3":"this if not jordanian",
+            "FGPA": 65.07,
+            "FCEGPA": null,
+            "FMajor": null,
+            "EmergencyContactName": "Almaazeh",
+            "EmergencyContactMobile": null,
+            "Mobile": "798561301",
+            "SecondPhone": "797286958",
+            "Landmark": "تلاع العلي",
+            "NavigationNationalityId": {
+                "_comment":"here we get nationality id",
+                "NationalityNameArabic": "الأردنية",
+                "NationalityId": 113
+            },
+            "NavigationGender": {
+                "DisplayValue": "Female (أنثى)"
+            },
+            "NavigationCountryOfBirth": {
+                "CountryNameArabic": "الأردن",
+                "CountryId": 112
+            },
+            "NavigationMaritalStatus": {
+                "DisplayValue": "Single (أعزب)"
+            },
+            "NavigationLocalState": null,
+            "NavigationFTwajihiStream": {
+                "DisplayValue": "IT- first stream (إدارة معلوماتية-المسار الأول)"
+            },
+            "NavigationCompletionYearP": {
+                "DisplayValue": "2015"
+            },
+            "NavigationFCountry": null,
+            "NavigationProgramLevelId": {
+                "Name": "Higher National Diploma Level 5",
+                "ProgramLevelId": 3,
+                "PLArabic": "الدبلوم البريطاني المستوى الخامس"
+            },
+            "NavigationCampus": {
+                "Name": "LTUC Amman"
+            },
+            "NavigationAreaofInterestId": {
+                "Name": "School of Business",
+                "AreaOfInterestArabic": "قسم الأعمال وتكنولوجيا المعلومات والأتصالات",
+                "AreaOfInterestId": 7
+            },
+            "NavigationDisabled1": {
+                "DisplayValue": "No"
+            },
+            "NavigationProject1": {
+                "Name": "EDU 2",
+                "ProjectId": 9
+            },
+            "NavigationProgramId": {
+                "Name": "Accounting and Financial Management",
+                "_comment":"this is for the program",
+                "ProgramId": 24,
+                "ProgramNameArabic": "العلوم الإدارية والمالية"
+            },
+            "NavigationProgramVersionId": {
+                "ProgramVersionId": 263,
+                "Name": "International 20182/Accounting and Financial Management",
+                "PVArabic": "الدبلوم البريطاني في /المحاسبة والادارة المالية"
+            }
+        },
+        "extendInfo": {
+            "Id": 12618,
+            "EnrollmentNumber": "216709353",
+            "EnrollmentStatus": {
+                "IsActive": true,
+                "_comment":"this is the status"
+            },
+            "ProgramVersion": {
+                "Id": 408,
+                "Name": "Accounting and Financial Management 2016"
+            },
+            "BillingMethod": {
+                "Name": "2018 - EDU II - Jordanians - HNDL 5 - Credit 48"
+            },
+            "Student": {
+                "StudentNumber": "216709353"
+            },
+            "SchoolStatus": {
+                "Name": "Postponed"
+            }
+        }},
+        {"info": {
+            "LeadId": 127144,
+            "Email": "798561301@luminuseducation.com",
+            "NationalityIDNumber": "9952029511",
+            "StudentNumber1": "216709355",
+            "FirstName": "Sarah",
+            "FathersName": "Mazen",
+            "GrandfathersName": "Mahmoud",
+            "LastName": "Manasra",
+            "FirstNameArabic": "ساره",
+            "FathersNameArabic": "مازن",
+            "GrandfathersNameArabic": "محمود",
+            "LastNameArabic": "مناصره",
+            "DateOfBirth": "1995-12-27T00:00:00+02:00",
+            "UNHCRNumber": null,
+            "JordanianSecurityIDNumber": null,
+            "FGPA": 65.07,
+            "FCEGPA": null,
+            "FMajor": null,
+            "EmergencyContactName": "Almaazeh",
+            "EmergencyContactMobile": null,
+            "Mobile": "798561301",
+            "SecondPhone": "797286958",
+            "Landmark": "تلاع العلي",
+            "NavigationNationalityId": {
+                "NationalityNameArabic": "الأردنية",
+                "NationalityId": 113
+            },
+            "NavigationGender": {
+                "DisplayValue": "Female (أنثى)"
+            },
+            "NavigationCountryOfBirth": {
+                "CountryNameArabic": "الأردن",
+                "CountryId": 112
+            },
+            "NavigationMaritalStatus": {
+                "DisplayValue": "Single (أعزب)"
+            },
+            "NavigationLocalState": null,
+            "NavigationFTwajihiStream": {
+                "DisplayValue": "IT- first stream (إدارة معلوماتية-المسار الأول)"
+            },
+            "NavigationCompletionYearP": {
+                "DisplayValue": "2015"
+            },
+            "NavigationFCountry": null,
+            "NavigationProgramLevelId": {
+                "Name": "Higher National Diploma Level 5",
+                "ProgramLevelId": 3,
+                "PLArabic": "الدبلوم البريطاني المستوى الخامس"
+            },
+            "NavigationCampus": {
+                "Name": "LTUC Amman"
+            },
+            "NavigationAreaofInterestId": {
+                "Name": "School of Business",
+                "AreaOfInterestArabic": "قسم الأعمال وتكنولوجيا المعلومات والأتصالات",
+                "AreaOfInterestId": 7
+            },
+            "NavigationDisabled1": {
+                "DisplayValue": "No"
+            },
+            "NavigationProject1": {
+                "Name": "EDU 2",
+                "ProjectId": 9
+            },
+            "NavigationProgramId": {
+                "Name": "Accounting and Financial Management",
+                "ProgramId": 24,
+                "ProgramNameArabic": "العلوم الإدارية والمالية"
+            },
+            "NavigationProgramVersionId": {
+                "ProgramVersionId": 263,
+                "Name": "International 20182/Accounting and Financial Management",
+                "PVArabic": "الدبلوم البريطاني في /المحاسبة والادارة المالية"
+            }
+        },
+        "extendInfo": {
+            "Id": 12618,
+            "EnrollmentNumber": "216709353",
+            "EnrollmentStatus": {
+                "IsActive": true
+            },
+            "ProgramVersion": {
+                "Id": 408,
+                "Name": "Accounting and Financial Management 2016"
+            },
+            "BillingMethod": {
+                "Name": "2018 - EDU II - Jordanians - HNDL 5 - Credit 48"
+            },
+            "Student": {
+                "StudentNumber": "216709353"
+            },
+            "SchoolStatus": {
+                "Name": "Postponed"
+            }
+        }},
+        {"info": {
+            "LeadId": 127145,
+            "Email": "798561301@luminuseducation.com",
+            "NationalityIDNumber": "9952029511",
+            "StudentNumber1": "216709354",
+            "FirstName": "Sarah",
+            "FathersName": "Mazen",
+            "GrandfathersName": "Mahmoud",
+            "LastName": "Manasra",
+            "FirstNameArabic": "ساره",
+            "FathersNameArabic": "مازن",
+            "GrandfathersNameArabic": "محمود",
+            "LastNameArabic": "مناصره",
+            "DateOfBirth": "1995-12-27T00:00:00+02:00",
+            "UNHCRNumber": null,
+            "JordanianSecurityIDNumber": null,
+            "FGPA": 65.07,
+            "FCEGPA": null,
+            "FMajor": null,
+            "EmergencyContactName": "Almaazeh",
+            "EmergencyContactMobile": null,
+            "Mobile": "798561301",
+            "SecondPhone": "797286958",
+            "Landmark": "تلاع العلي",
+            "NavigationNationalityId": {
+                "NationalityNameArabic": "الأردنية",
+                "NationalityId": 113
+            },
+            "NavigationGender": {
+                "DisplayValue": "Female (أنثى)"
+            },
+            "NavigationCountryOfBirth": {
+                "CountryNameArabic": "الأردن",
+                "CountryId": 112
+            },
+            "NavigationMaritalStatus": {
+                "DisplayValue": "Single (أعزب)"
+            },
+            "NavigationLocalState": null,
+            "NavigationFTwajihiStream": {
+                "DisplayValue": "IT- first stream (إدارة معلوماتية-المسار الأول)"
+            },
+            "NavigationCompletionYearP": {
+                "DisplayValue": "2015"
+            },
+            "NavigationFCountry": null,
+            "NavigationProgramLevelId": {
+                "Name": "Higher National Diploma Level 5",
+                "ProgramLevelId": 3,
+                "PLArabic": "الدبلوم البريطاني المستوى الخامس"
+            },
+            "NavigationCampus": {
+                "Name": "LTUC Amman"
+            },
+            "NavigationAreaofInterestId": {
+                "Name": "School of Business",
+                "AreaOfInterestArabic": "قسم الأعمال وتكنولوجيا المعلومات والأتصالات",
+                "AreaOfInterestId": 7
+            },
+            "NavigationDisabled1": {
+                "DisplayValue": "No"
+            },
+            "NavigationProject1": {
+                "Name": "EDU 2",
+                "ProjectId": 9
+            },
+            "NavigationProgramId": {
+                "Name": "Accounting and Financial Management",
+                "ProgramId": 24,
+                "ProgramNameArabic": "العلوم الإدارية والمالية"
+            },
+            "NavigationProgramVersionId": {
+                "ProgramVersionId": 263,
+                "Name": "International 20182/Accounting and Financial Management",
+                "PVArabic": "الدبلوم البريطاني في /المحاسبة والادارة المالية"
+            }
+        },
+        "extendInfo": {
+            "Id": 12618,
+            "EnrollmentNumber": "216709353",
+            "EnrollmentStatus": {
+                "IsActive": true
+            },
+            "ProgramVersion": {
+                "Id": 408,
+                "Name": "Accounting and Financial Management 2016"
+            },
+            "BillingMethod": {
+                "Name": "2018 - EDU II - Jordanians - HNDL 5 - Credit 48"
+            },
+            "Student": {
+                "StudentNumber": "216709353"
+            },
+            "SchoolStatus": {
+                "Name": "Postponed"
+            }
+        }}
+    ]
+}
