@@ -1,6 +1,6 @@
 -- DROP TABLE IF EXISTS student_laptop, laptops, student_scholarship, scholarships, programs, program_requirement, user, roles, role_crud;
 
-DROP TABLE IF EXISTS laptops, roles, users;
+DROP TABLE IF EXISTS laptops, roles, users,programs, program_requirements;
 -- CREATE TABLE IF NOT EXISTS student_laptop(
 --     std_id INTEGER, 
 --     scholarship_id VARCHAR(255),
@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS laptops (
 CREATE TABLE IF NOT EXISTS roles (
     id SERIAL,
     name VARCHAR(255) PRIMARY KEY
-    );
+);
+
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -46,6 +47,24 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 
+CREATE TABLE IF NOT EXISTS programs (
+    name VARCHAR(255),
+    id VARCHAR(255) PRIMARY KEY,
+    version VARCHAR,
+    department VARCHAR(255),
+    is_active BOOLEAN
+);
+CREATE TABLE IF NOT EXISTS program_requirements (
+    program_id VARCHAR(255),
+    CONSTRAINT fk_program_id 
+     FOREIGN KEY(program_id) 
+     REFERENCES programs(id),
+    cpu VARCHAR(255),
+    ram VARCHAR(255),
+    display_resolution VARCHAR(255),
+    storage_space VARCHAR(255),
+    storage_type VARCHAR(255)
+);
 -- CREATE TABLE IF NOT EXISTS student_scholarship (
 --     student_id INTEGER,
 --     scholar_id VARCHAR(255) PRIMARY KEY,
@@ -61,22 +80,7 @@ CREATE TABLE IF NOT EXISTS users (
 --     keep_laptop_after_grad BOOLEAN
 -- );
 
--- CREATE TABLE IF NOT EXISTS programs (
---     program_name VARCHAR(255),
---     program_id VARCHAR(255) PRIMARY KEY,
---     program_version VARCHAR,
---     department VARCHAR(255)
--- );
 
--- CREATE TABLE IF NOT EXISTS program_requirements (
---     program_id INTEGER,
---     CONSTRAINT  program_id FOREIGN KEY program_id REFERENCES programs (program_id),
---     cpu VARCHAR(255),
---     ram VARCHAR(255),
---     display_resolution VARCHAR(255),
---     storage_space VARCHAR(255),
---     storage_type VARCHAR(255),
--- );
 
 -- CREATE TABLE IF NOT EXISTS user (
 --     id SERIAL,
