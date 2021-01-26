@@ -69,6 +69,7 @@ async function getRemoteUser(token) {
   }
 }
 
+
 async function getUser(userObj) {
   console.log('userobj-------', userObj);
   let userRecord = {
