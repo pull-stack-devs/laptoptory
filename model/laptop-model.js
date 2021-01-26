@@ -103,10 +103,10 @@ class Laptop {
   }
 
   async updateAvailabilty(serial) {
-    let SQL = `UPDATE laptops SET availability = false WHERE serial_no= $1`;
+    let SQL = `UPDATE laptops SET availability = false WHERE serial_no= $1 RETURNING *`;
     try {
-      let newLaptop = await pool.query(SQL, [serial]);
-      return newLaptop;
+      let {rows} = await pool.query(SQL, [serial]);
+      return rows;
     } catch (err) {
       errorHandler(err);
     }

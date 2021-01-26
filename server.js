@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 const laptopRoutes = require('./lib/laptop-routes');
-const programRoutes = require('./lib/laptop-routes');
+const programRoutes = require('./lib/porgram-routes');
 const programRequirementsRoutes = require('./lib/program-requirements-routes');
 const studentRoutes = require('./lib/studetn-routes');
 const PORT = process.env.PORT;

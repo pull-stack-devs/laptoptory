@@ -6,13 +6,14 @@ async function bearerMiddleware(req, res, next) {
     next('not LoggedIn!');
     return;
   }
+  
   let authHeader = req.headers.authorization.split(' ');
 
-  if (authHeader[0] != 'Bearer') {
+  if (authHeader[0] != 'Bearer' || !req.headers.cookie ) {
     next('invalid Header!');
     return;
   }
-
+  console.log("reqqqqqqqqq?>>>>>>>> ",req.headers.cookie);
   let token = authHeader[1];
   console.log(authHeader[1]);
 
