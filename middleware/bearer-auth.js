@@ -18,11 +18,10 @@ async function bearerMiddleware(req, res, next) {
 
   let result = await users.authenticateToken(token, process.env.SECRET);
   console.log(result);
-  let checkUserExist = await users.get({ username: result.username });
-  console.log(checkUserExist);
+  let checkUserExist = await users.get(result.username);
+  console.log("User>>>>>> ", checkUserExist);
   if (checkUserExist) {
-    let record = await users.getById(checkUserExist[0]._id);
-    req.user = record;
+    req.user = checkUserExist[0];
     next();
   } else {
     next('ERR!');

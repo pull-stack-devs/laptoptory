@@ -21,11 +21,13 @@ module.exports = async function (req, res, next) {
     console.log('(2) remoteToken =====> ', remoteToken);
     //3.get user object
     let remoteUser = await getRemoteUser(remoteToken);
+
     console.log("(3) remoteUser.login-----> ", remoteUser.login);
     let [localUser, localToken] = await getUser(remoteUser);
     console.log("(4) localUser -----> ", localUser, " localToken ===> ", localToken);
     req.user=localUser;
     req.token=localToken;
+
     next();
 }
 
@@ -47,6 +49,7 @@ async function exchangeCodeWithToken(code) {
       } catch (err) {
         console.error(err)
       }
+
 };
 
 async function getRemoteUser(token) {
@@ -60,6 +63,7 @@ async function getRemoteUser(token) {
         return user;
     } catch (err) { console.log('this is when get remoteuser fail', err) }
 }
+
 async function getUser(userObj) {
     console.log('userobj-------', userObj)
     let userRecord = {
@@ -79,4 +83,5 @@ async function getUser(userObj) {
         return[token,record];
     }
 }
+
 
