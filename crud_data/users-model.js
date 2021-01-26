@@ -41,11 +41,13 @@ class User {
   }
 
   async get(username) {
+
     let SQL = `SELECT * FROM users WHERE username = $1`;
     try {
       let { rows } = await pool.query(SQL, [username]);
       return rows;
     } catch (err) {
+      console.log("the error", err)
       errorHandler(err);
     }
   }
@@ -90,7 +92,7 @@ class User {
 
   generateToken(data) {
     let token = jwt.sign({username: data.username, password: data.password, role_name: data.role}
-      , process.env.SECRET
+      , 'anything'
       )
       return token;
   }
