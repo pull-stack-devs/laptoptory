@@ -1,5 +1,5 @@
 'use strict';
-const roles = require('../crud_data/role-model');
+const roles = require('../model/role-model');
 
 module.exports = (capability) => {
   return async (req, res, next) => {

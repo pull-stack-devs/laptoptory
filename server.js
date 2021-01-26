@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
 app.use(express.json());
-const Laptop = require('./crud_data/laptops');
+const laptopRoutes = require('./lib/laptop-routes');
 const PORT = process.env.PORT;
 const router = require('./lib/router');
 const notFoundHandler = require('./middleware/404');
@@ -18,6 +18,7 @@ app.use(
 );
 
 app.use(router);
+app.use(laptopRoutes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
