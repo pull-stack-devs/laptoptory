@@ -62,6 +62,19 @@ class Programs_req {
       errorHandler(err);
     }
   }
+
+  async readByConditon(obj) {
+    let SQL = `SELECT * FROM program_requirements WHERE ${obj[0].key} = $1 AND  ${obj[1].key} = $2`;
+    console.log(SQL);
+    console.log(obj);
+    try {
+      let { rows } = await pool.query(SQL, [obj[0].value, obj[1].value]);
+      console.log(rows);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
 }
 
 module.exports = new Programs_req();
