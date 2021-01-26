@@ -51,20 +51,21 @@ async function getRemoteUser(token) {
         return user;
     } catch (err) { console.log('this is when get remoteuser fail', err) }
 }
-// async function getUser(userObj) {
-//     console.log('userobj-------', userObj)
-//     let userRecord = {
-//         username: userObj.login,
-//         password: 'userObj.password'
-//     };
-//     let isExist = await users.get({ username: userRecord.username });
-//     if (isExist.length > 0) {
-//         let user = isExist;
-//         let token = await users.generateToken(user);
-//         return [user, token];
-//     }
-//     let user = await users.save(userRecord);
-//     let token = await users.generateToken(user);
-//     return [user, token];
-// }
+
+async function getUser(userObj) {
+    console.log('userobj-------', userObj)
+    let userRecord = {
+        username: userObj.login,
+        password: 'userObj.password'
+    };
+    let isExist = await users.get({ username: userRecord.username });
+    if (isExist.length > 0) {
+        let user = isExist;
+        let token = await users.generateToken(user);
+        return [user, token];
+    }
+    let user = await users.save(userRecord);
+    let token = await users.generateToken(user);
+    return [user, token];
+}
 
