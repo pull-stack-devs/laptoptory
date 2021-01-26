@@ -56,25 +56,38 @@ CREATE TABLE IF NOT EXISTS users (
 );
 INSERT INTO users (username, role_name, password, email, name, is_accepted) VALUES ('super-admin','super-admin','admin','admin','admin', true);
 
--- CREATE TABLE IF NOT EXISTS role_crud (
---     role_id VARCHAR(255),
---     CONSTRAINT role_id FOREIGN KEY role_id REFERENCES roles (role_id),
---     crud_access VARCHAR(255)
--- );
 
 CREATE TABLE IF NOT EXISTS programs (
+    id SERIAL,
     name VARCHAR(255),
-    id VARCHAR(255) PRIMARY KEY,
     version VARCHAR,
     department VARCHAR(255),
-    is_active BOOLEAN
+    is_active BOOLEAN,
+    PRIMARY KEY(name, version)
 );
+
+CREATE TABLE IF NOT EXISTS program_requirements (
+    program_name VARCHAR(255),
+    program_version VARCHAR(255),
+    CONSTRAINT fk_program_name_and_version 
+     FOREIGN KEY(program_name, program_version) 
+     REFERENCES programs(name, version),
+    cpu VARCHAR(255),
+    ram VARCHAR(255),
+    display_resolution VARCHAR(255),
+    storage_space VARCHAR(255),
+    storage_type VARCHAR(255)
+);
+
 
 CREATE TABLE IF NOT EXISTS scholarships (
     id SERIAL PRIMARY KEY,
     scholarship_name VARCHAR(255),
-    program_id VARCHAR(255), 
-    CONSTRAINT fk_program_id FOREIGN KEY (program_id) REFERENCES programs (id),
+    program_name VARCHAR(255),
+    program_version VARCHAR(255),
+    CONSTRAINT fk_program_name_and_version 
+     FOREIGN KEY(program_name, program_version) 
+     REFERENCES programs(name, version),
     covers_laptop BOOLEAN,
     covers_transportation BOOLEAN,
     keep_laptop_after_grad BOOLEAN
@@ -87,17 +100,6 @@ CREATE TABLE IF NOT EXISTS student_scholarship (
     CONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES student (id)
 );
 
-CREATE TABLE IF NOT EXISTS program_requirements (
-    program_id VARCHAR(255),
-    CONSTRAINT fk_program_id 
-     FOREIGN KEY(program_id) 
-     REFERENCES programs(id),
-    cpu VARCHAR(255),
-    ram VARCHAR(255),
-    display_resolution VARCHAR(255),
-    storage_space VARCHAR(255),
-    storage_type VARCHAR(255)
-);
 
 CREATE TABLE IF NOT EXISTS student_laptop(
     std_id INTEGER, 

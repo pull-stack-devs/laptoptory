@@ -20,7 +20,7 @@ class User {
       data.is_accepted
     ];
     console.log(VALUES)
-    let SQL = `INSERT INTO users(username, role_name, password, email, name,is_accepted) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
+    let SQL = `INSERT INTO users(username, role_name, password, email, name, is_accepted) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       console.log(rows);

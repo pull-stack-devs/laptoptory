@@ -70,6 +70,19 @@ class Laptop {
       errorHandler(err);
     }
   }
+
+  async readByConditon(obj) {
+    let SQL = `SELECT * FROM laptops WHERE ${obj.key} = $1`;
+    console.log(SQL);
+    console.log(obj);
+    try {
+      let { rows } = await pool.query(SQL, [obj.value]);
+      console.log(rows);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
 }
 
 module.exports = new Laptop();

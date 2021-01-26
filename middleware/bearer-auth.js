@@ -1,5 +1,5 @@
 'use strict';
-const users = require('../crud_data/users-model');
+const users = require('../model/users-model');
 require('dotenv').config;
 async function bearerMiddleware(req, res, next) {
   if (!req.headers.authorization) {
