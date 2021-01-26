@@ -31,7 +31,7 @@
 
 ***Stretch Goals***
 
-![Stretch Goals]()
+![Stretch Goals](./assets/stretch.PNG)
 
 
 

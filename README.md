@@ -16,12 +16,14 @@ Our system is a web application that will track all the student's or employee's 
 ![Vision](./assets/vision.PNG)
 
 ## Wireframe
+![Wireframe](./assets/wireframe.PNG)
+
 
 ## Domain Modeling
-![first demo](./assets/brief-dm.png)
+![UML](./assets/uml.PNG)
 
 ## Database Schema
-
+![Schema](./assets/schemadb.PNG)
 
 ## User Story
 **[Trello Managment Board](https://trello.com/b/Oz51vJqM/laptoptory)**
@@ -29,9 +31,7 @@ Our system is a web application that will track all the student's or employee's 
 ## Workflow 
 **[Trello Board](https://trello.com/b/NQyKS4TG/laptoptory)**
 
-## Entity Relationship Diagram
-![App Entity Diagram](./assets/entity-diagram.png)
 
 ## Stretch Goals
-
+![Stretch Goals](./assets/stretch.PNG)
 
