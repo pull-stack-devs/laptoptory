@@ -99,7 +99,7 @@ class User {
     console.log(secret);
     console.log(token);
     let tokenObject = await jwt.verify(token, secret);
-    console.log(tokenObject);
+    // console.log(tokenObject);
     console.log('tokenObject : ', tokenObject);
     //let checkUserExist = await this.get({ username: tokenObject.username });
     return tokenObject;

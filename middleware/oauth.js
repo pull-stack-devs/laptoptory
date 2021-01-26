@@ -19,24 +19,24 @@ module.exports = async function (req, res, next) {
     console.log('(2) remoteToken =====> ', remoteToken);
     //3.get user object
     let remoteUser = await getRemoteUser(remoteToken);
-    console.log("(3) remoteUser.login-----> ", remoteUser.login);
-    let [localUser, localToken] = await getUser(remoteUser);
-    console.log("(4) localUser -----> ", localUser, " localToken ===> ", localToken);
-    req.user = localUser;
-    req.token = localToken;
+    console.log("(3) remoteUser.login-----> ", remoteUser);
+    // let [localUser, localToken] = await getUser(remoteUser);
+    // console.log("(4) localUser -----> ", localUser, " localToken ===> ", localToken);
+    // req.user = localUser;
+    // req.token = localToken;
     next();
 }
 
 async function exchangeCodeWithToken(code) {
     //token url use
     let tokenResponse = await superagent.post(tokenUrl).send({
-        grant_type: authorization_code,
-        code:code,
-        redirect_uri:'http://localhost:3000/oauth',
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: 'http%3A%2F%2Flocalhost%3A3000%2Foauth',
         client_id: CLIENT_ID,
-        client_secret: SECRET_ID,
+        client_secret: SECRET_ID
     });
-    console.log('tokenresponse', tokenResponse.body)
+    console.log('tokenresponse', tokenResponse.body.access_token)
     return tokenResponse.body.access_token;
 };
 
@@ -51,6 +51,7 @@ async function getRemoteUser(token) {
         return user;
     } catch (err) { console.log('this is when get remoteuser fail', err) }
 }
+
 // async function getUser(userObj) {
 //     console.log('userobj-------', userObj)
 //     let userRecord = {
