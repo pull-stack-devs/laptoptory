@@ -2,6 +2,8 @@
 const users = require('../crud_data/users-model');
 const superagent = require('superagent');
 require('dotenv').config();
+const morgan = require('morgan');
+
 
 const tokenUrl = 'https://www.linkedin.com/oauth/v2/accessToken';//post method
 const userUrl = 'https://api.linkedin.com/v2/me';//get method
@@ -19,53 +21,67 @@ module.exports = async function (req, res, next) {
     console.log('(2) remoteToken =====> ', remoteToken);
     //3.get user object
     let remoteUser = await getRemoteUser(remoteToken);
-    console.log("(3) remoteUser.login-----> ", remoteUser);
-    // let [localUser, localToken] = await getUser(remoteUser);
-    // console.log("(4) localUser -----> ", localUser, " localToken ===> ", localToken);
-    // req.user = localUser;
-    // req.token = localToken;
+
+    console.log("(3) remoteUser.login-----> ", remoteUser.login);
+    let [localUser, localToken] = await getUser(remoteUser);
+    console.log("(4) localUser -----> ", localUser, " localToken ===> ", localToken);
+    req.user=localUser;
+    req.token=localToken;
+
     next();
 }
 
 async function exchangeCodeWithToken(code) {
     //token url use
-    let tokenResponse = await superagent.post(tokenUrl).send({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: 'http%3A%2F%2Flocalhost%3A3000%2Foauth',
-        client_id: CLIENT_ID,
-        client_secret: SECRET_ID
-    });
-    console.log('tokenresponse', tokenResponse.body.access_token)
-    return tokenResponse.body.access_token;
+    try {  
+        
+        let tokenResponse = await superagent.post(tokenUrl)
+        .set('Content-Type' , 'application/x-www-form-urlencoded')
+        .send({
+            content_type:'application/x-www-form-urlencoded',
+            grant_type: "authorization_code",
+            code:code,
+            redirect_uri:'http://localhost:3000/oauth',
+            client_id: CLIENT_ID,
+            client_secret: SECRET_ID,
+        });
+        return tokenResponse.body.access_token;
+      } catch (err) {
+        console.error(err)
+      }
+
 };
 
 async function getRemoteUser(token) {
-    console.log('inside getremoteuser')
     try {
         let useResponse = await superagent.get(userUrl)
-            .set('Authorization', `token ${token}`)
+            .set('Authorization', `Bearer ${token}`)
             .set('user-agent', '401d6-app')
-        console.log('useResponse----->', useResponse);
+        
         let user = useResponse.body;
+        console.log('user object=======>>>>',user)
         return user;
     } catch (err) { console.log('this is when get remoteuser fail', err) }
 }
 
-// async function getUser(userObj) {
-//     console.log('userobj-------', userObj)
-//     let userRecord = {
-//         username: userObj.login,
-//         password: 'userObj.password'
-//     };
-//     let isExist = await users.get({ username: userRecord.username });
-//     if (isExist.length > 0) {
-//         let user = isExist;
-//         let token = await users.generateToken(user);
-//         return [user, token];
-//     }
-//     let user = await users.save(userRecord);
-//     let token = await users.generateToken(user);
-//     return [user, token];
-// }
+async function getUser(userObj) {
+    console.log('userobj-------', userObj)
+    let userRecord = {
+        username: userObj.localizedFirstName,
+        role_name:"user",
+        password: 'userObj.password',
+        email:"aisha@ltuc.com",
+        name:`${userObj.localizedFirstName} ${userObj.localizedLastName}`
+    };
+    let exist=await users.get(userRecord.username)
+    if( exist){
+        let token = await users.generateToken(exist);
+        return[ token,exist];
+    }else{
+       let record =await users.create(userRecord);
+       let token = await users.generateToken(userRecord);
+        return[token,record];
+    }
+}
+
 
