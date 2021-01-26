@@ -1,29 +1,22 @@
 'use strict';
 
+const pg = require('pg');
 let pool = require('../pool');
-let errorHandler = require('../middleware/500');
 
-class User {
+class Role {
   constructor() {}
   async create(data) {
-    let VALUES = [
-      data.username,
-      data.role_name,
-      data.password,
-      data.email,
-      data.name,
-    ];
-    let SQL = `INSERT INTO users(username, role_name, password, email, name) VALUES($1, $2, $3, $4, $5) RETURNING *`;
+    let VALUES = [data.name, data.permission];
+    let SQL = `INSERT INTO roles(name, permission) VALUES($1, $2) RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
-      console.log(rows);
       return rows;
     } catch (err) {
       errorHandler(err);
     }
   }
   async read() {
-    let SQL = `SELECT * FROM users`;
+    let SQL = `SELECT * FROM roles`;
     try {
       let { rows } = await pool.query(SQL);
       return rows;
@@ -31,9 +24,20 @@ class User {
       errorHandler(err);
     }
   }
+
+  async get(role_name) {
+    let sql = `SELECT * FROM roles WHERE name = $1`;
+    try {
+      let {rows} = await pool.query(sql, [role_name]);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
+
   async delete(data) {
     let VALUES = [data.id];
-    let SQL = `DELETE FROM users WHERE id = $1`;
+    let SQL = `DELETE FROM roles WHERE id = $1`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -42,8 +46,8 @@ class User {
     }
   }
   async update(data) {
-    let VALUES = [data.username, data.role_name, data.password, data.email, data.name, data.id];
-    let SQL = `UPDATE users SET username =$1, role_name=$2, password=$3, email=$4, name = $5 WHERE id = $6 RETURNING *`;
+    let VALUES = [data.name, data.permission, data.id];
+    let SQL = `UPDATE roles SET name = $1, permission = $2 WHERE id = $3 RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -53,4 +57,4 @@ class User {
   }
 }
 
-module.exports = new User();
+module.exports = new Role();

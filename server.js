@@ -5,7 +5,10 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
 app.use(express.json());
-const Laptop = require('./crud_data/laptops');
+const laptopRoutes = require('./lib/laptop-routes');
+const programRoutes = require('./lib/porgram-routes');
+const programRequirementsRoutes = require('./lib/program-requirements-routes');
+const studentRoutes = require('./lib/studetn-routes');
 const PORT = process.env.PORT;
 const router = require('./lib/router');
 const notFoundHandler = require('./middleware/404');
@@ -18,9 +21,12 @@ app.use(
 );
 
 app.use(router);
+app.use(laptopRoutes);
+app.use(programRoutes);
+app.use(programRequirementsRoutes);
+app.use(studentRoutes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
-
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
