@@ -68,18 +68,20 @@ async function getUser(userObj) {
     console.log('userobj-------', userObj)
     let userRecord = {
         username: userObj.localizedFirstName,
-        role_name:"user",
+        role_name: "user",
         password: 'userObj.password',
         email:"aisha@ltuc.com",
-        name:`${userObj.localizedFirstName} ${userObj.localizedLastName}`
+        name:`${userObj.localizedFirstName} ${userObj.localizedLastName}`,
+        is_accepted: false
     };
     let exist=await users.get(userRecord.username)
-    if( exist){
-        let token = await users.generateToken(exist);
+    console.log(exist)
+    if(exist.length > 0){
+        let token = await users.generateToken(exist[0]);
         return[ token,exist];
     }else{
-       let record =await users.create(userRecord);
-       let token = await users.generateToken(userRecord);
+       let record =await users.create(userRecord[0]);
+       let token = await users.generateToken(userRecord[0]);
         return[token,record];
     }
 }

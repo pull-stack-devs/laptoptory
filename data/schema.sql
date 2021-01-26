@@ -1,5 +1,9 @@
 DROP TABLE IF EXISTS student, student_laptop, laptops, student_scholarship, scholarships, programs, program_requirements, users, roles;
 
+-- programs + program-requirements 
+-- available laptops.
+-- student + scholarships 
+
 CREATE TABLE IF NOT EXISTS student (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(255),
