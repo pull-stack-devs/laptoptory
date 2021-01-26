@@ -1,12 +1,15 @@
 'use strict';
+
 let pool = require('../pool');
 let errorHandler = require('../middleware/500');
-class Programs {
+
+class StudentsLaptops {
   constructor() {}
 
-  async create(data) {
-    let VALUES = [data.name, data.version, data.department, data.is_active];
-    let SQL = `INSERT INTO programs (name, version, department, is_active) VALUES($1, $2, $3, $4) RETURNING *`;
+  async assign(data) {
+    let VALUES = [data.std_id, data.laptop_id, data.availability];
+    let SQL = `INSERT INTO student_laptop (std_id, laptop_id, availability) VALUES($1, $2, $3) RETURNING *`;
+
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -14,8 +17,10 @@ class Programs {
       errorHandler(err);
     }
   }
+
   async read() {
-    let SQL = `SELECT * FROM programs`;
+    let SQL = `SELECT * FROM student_laptop`;
+
     try {
       let { rows } = await pool.query(SQL);
       return rows;
@@ -25,13 +30,12 @@ class Programs {
   }
   async update(data) {
     let VALUES = [
-      data.name,
-      data.version,
-      data.department,
-      data.is_active,
+      data.std_id,
+      data.laptop_id,
+      data.availability,
       data.id,
     ];
-    let SQL = `UPDATE programs SET name = $1, version = $2 , department = $3 ,is_active = $4 WHERE id = $5 RETURNING *`;
+    let SQL = `UPDATE student_laptop SET std_id = $1, laptop_id = $2 , availability = $3 WHERE id = $4 RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -42,7 +46,7 @@ class Programs {
 
   async delete(data) {
     let VALUES = [data.id];
-    let SQL = `DELETE FROM programs WHERE id = $1`;
+    let SQL = `DELETE FROM student_laptop WHERE id = $1`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -50,8 +54,9 @@ class Programs {
       errorHandler(err);
     }
   }
+
   async readByConditon(obj) {
-    let SQL = `SELECT * FROM programs WHERE ${obj.key} = $1`;
+    let SQL = `SELECT * FROM student_laptop WHERE ${obj.key} = $1`;
     console.log(SQL);
     console.log(obj);
     try {
@@ -64,4 +69,4 @@ class Programs {
   }
 }
 
-module.exports = new Programs();
+module.exports = new StudentsLaptops();

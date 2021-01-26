@@ -8,19 +8,15 @@ class Laptop {
   constructor() {}
 
   async create(data) {
-    let SQL = `INSERT INTO laptops (id,serial_no, brand, cpu, ram, storage,storage_type,carry_case,external_mouse,power_cable,charger,display_resolution,model,availability) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *;`;
+    let SQL = `INSERT INTO laptops (serial_no, brand, cpu, ram, storage, storage_type, power_cable, display_resolution, model, availability) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;`;
     let VALUES = [
-      data.id,
       data.serial_no,
       data.brand,
       data.cpu,
       data.ram,
       data.storage,
       data.storage_type,
-      data.carry_case,
-      data.external_mouse,
       data.power_cable,
-      data.charger,
       data.display_resolution,
       data.model,
       data.availability,
@@ -45,9 +41,8 @@ class Laptop {
   }
 
   async update(data) {
-    let SQL = `UPDATE laptops SET id=$1, serial_no=$2, brand=$3, cpu=$4, ram=$5, storage=$6, storage_type=$7, carry_case=$8, external_mouse=$9, power_cable=$10, charger=$11, display_resolution=$12, model=$13, availability=$14 WHERE id = $1 RETURNING *`;
+    let SQL = `UPDATE laptops SET serial_no= $1, brand=$2, cpu=$3, ram=$4, storage=$5, storage_type=$6, power_cable=$7, display_resolution=$8, model=$9, availability=$10 WHERE id = $11 RETURNING *`;
     let VALUES = [
-      data.id,
       data.serial_no,
       data.brand,
       data.cpu,
@@ -61,6 +56,7 @@ class Laptop {
       data.display_resolution,
       data.model,
       data.availability,
+      data.id,
     ];
 
     try {
@@ -79,6 +75,38 @@ class Laptop {
       let { rows } = await pool.query(SQL, [obj.value]);
       console.log(rows);
       return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
+
+  async readByRequirements(obj) {
+    if (!obj) {
+      return [];
+    }
+    let SQL = `SELECT * FROM laptops WHERE cpu = $1 AND ram = $2 AND storage = $3 AND storage_type = $4 AND display_resolution = $5`;
+    console.log(SQL);
+    console.log(obj);
+    try {
+      let { rows } = await pool.query(SQL, [
+        obj.cpu,
+        obj.ram,
+        obj.storage_space,
+        obj.storage_type,
+        obj.display_resolution,
+      ]);
+      console.log(rows);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
+
+  async updateAvailabilty(serial) {
+    let SQL = `UPDATE laptops SET availability = false WHERE serial_no= $1`;
+    try {
+      let newLaptop = await pool.query(SQL, [serial]);
+      return newLaptop;
     } catch (err) {
       errorHandler(err);
     }

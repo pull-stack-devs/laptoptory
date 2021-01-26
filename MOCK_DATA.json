@@ -157,6 +157,38 @@
         "display_resolution": "1080",
         "model": "204099158-1",
         "availability": false
+    },
+    {
+        "id": "11",
+        "serial_no": "11",
+        "brand": "Asus",
+        "cpu": "i7",
+        "ram": "8",
+        "storage": "500",
+        "storage_type": "hhd",
+        "carry_case": false,
+        "external_mouse": true,
+        "power_cable": false,
+        "charger": "10",
+        "display_resolution": "1080",
+        "model": "204099158-1",
+        "availability": false
+    },
+    {
+        "id": "12",
+        "serial_no": "12",
+        "brand": "Asus",
+        "cpu": "i7",
+        "ram": "16",
+        "storage": "1000",
+        "storage_type": "ssd",
+        "carry_case": false,
+        "external_mouse": true,
+        "power_cable": false,
+        "charger": "10",
+        "display_resolution": "2160",
+        "model": "204099158-1",
+        "availability": false
     }
 ]
 
@@ -231,25 +263,3 @@
     }
 
 ]
-
-
-{
-    “program_name”: “full-stack dev”,
-    “program_version”: “v2”,
-    “cpu”: “i7”,
-    “ram”: “8”,
-    “storage_space”: “500”,
-    “storage_type”: “hhd”,
-    “display_resolution”:”1080”
-    }
-    
-    {
-    “program_name”: “graphic designer”,
-    “program_version”: “v1”,
-    “cpu”: “i7”,
-    “ram”: “16”,
-    “storage_space”: “1000”,
-    “storage_type”: “ssd”,
-    “display_resolution”:”2160”
-    }
-    
