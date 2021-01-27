@@ -1,14 +1,17 @@
 'use strict';
 
 const Pool = require('pg').Pool;
-require('dotenv').config();
+let connectionString  = process.env.DATABASE_URL;
+const pool = new Pool({ connectionString });
 
-const pool = new Pool({
-  user: 'husam',
+module.exports = pool;
+
+/*
+
+user: 'husam',
   host: 'localhost',
   database: 'inventory_app',
   password: '0000',
   port: 5432,
-});
 
-module.exports = pool;
+  */

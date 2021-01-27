@@ -13,6 +13,9 @@ const PORT = process.env.PORT;
 const router = require('./lib/router');
 const notFoundHandler = require('./middleware/404');
 const errorHandler = require('./middleware/500');
+
+const mongoose = require('mongoose');
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -28,10 +31,13 @@ app.use(studentRoutes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
 });
-
-module.exports = {
-  server: app
-}
