@@ -22,7 +22,7 @@ class Laptop {
       data.availability,
     ];
     try {
-      let newLaptop = await pool.query(SQL, VALUES);
+      let {newLaptop} = await pool.query(SQL, VALUES);
       return newLaptop;
     } catch (err) {
       errorHandler(err);
@@ -40,6 +40,17 @@ class Laptop {
     }
   }
 
+  async delete(id) {
+    let SQL = `DELETE FROM laptops WHERE id = $1`;
+    try {
+      let { rows } = await pool.query(SQL, [id]);
+      console.log(rows);
+      return `Item ${id} is deleted`;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
+
   async update(data) {
     let SQL = `UPDATE laptops SET serial_no= $1, brand=$2, cpu=$3, ram=$4, storage=$5, storage_type=$6, power_cable=$7, display_resolution=$8, model=$9, availability=$10 WHERE id = $11 RETURNING *`;
     let VALUES = [
@@ -49,9 +60,6 @@ class Laptop {
       data.ram,
       data.storage,
       data.storage_type,
-      data.carry_case,
-      data.external_mouse,
-      data.power_cable,
       data.charger,
       data.display_resolution,
       data.model,

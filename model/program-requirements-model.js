@@ -35,6 +35,17 @@ class Programs_req {
       errorHandler(err);
     }
   }
+
+  async get(program_name) {
+    let SQL = `SELECT * FROM program_requirements WHERE program_name = $1`;
+    try {
+      let { rows } = await pool.query(SQL, [program_name]);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  }
+
   async update(data) {
     let VALUES = [
       data.cpu,
@@ -42,9 +53,9 @@ class Programs_req {
       data.display_resolution,
       data.storage_space,
       data.storage_type,
-      data.program_id,
+      data.id,
     ];
-    let SQL = `UPDATE program_requirements SET cpu = $1, ram = $2 ,display_resolution = $3 ,storage_space = $4,storage_type = $5 WHERE program_id = $6 RETURNING *`;
+    let SQL = `UPDATE program_requirements SET cpu = $1, ram = $2 ,display_resolution = $3 ,storage_space = $4,storage_type = $5 WHERE id = $6 RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
@@ -53,8 +64,8 @@ class Programs_req {
     }
   }
   async delete(data) {
-    let VALUES = [data.program_id];
-    let SQL = `DELETE FROM program_requirements WHERE program_id = $1`;
+    let VALUES = [data.id];
+    let SQL = `DELETE FROM program_requirements WHERE id = $1`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
