@@ -11,13 +11,14 @@ class User {
   async create(data) {
     console.log('inside create');
     let hasedPass = await bcrypt.hash(data.password, 10);
+    let is_accepted = false
     let VALUES = [
       data.username,
       data.role_name,
       hasedPass,
       data.email,
       data.name,
-      data.is_accepted,
+      is_accepted
     ];
     console.log(VALUES);
     let SQL = `INSERT INTO users(username, role_name, password, email, name, is_accepted) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
