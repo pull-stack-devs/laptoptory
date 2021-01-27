@@ -17,7 +17,7 @@ class Role {
     }
   }
   async read() {
-    let SQL = `SELECT * FROM rolegs`;
+    let SQL = `SELECT * FROM roles`;
     try {
       let { rows } = await pool.query(SQL);
       return rows;
