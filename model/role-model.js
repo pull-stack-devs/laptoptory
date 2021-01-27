@@ -21,7 +21,8 @@ class Role {
       let { rows } = await pool.query(SQL);
       return rows;
     } catch (err) {
-      errorHandler(err);
+      console.log('err>>>>', err)
+      // errorHandler(err);
     }
   }
 
