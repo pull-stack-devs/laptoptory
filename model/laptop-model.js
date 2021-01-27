@@ -22,8 +22,8 @@ class Laptop {
       data.availability,
     ];
     try {
-      let {newLaptop} = await pool.query(SQL, VALUES);
-      return newLaptop;
+      let {rows} = await pool.query(SQL, VALUES);
+      return rows;
     } catch (err) {
       errorHandler(err);
     }
