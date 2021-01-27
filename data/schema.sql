@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS student (
      REFERENCES programs(name, version)
 );
 
-
 CREATE TABLE IF NOT EXISTS laptops (
     id SERIAL,
     serial_no VARCHAR(255) PRIMARY KEY,
