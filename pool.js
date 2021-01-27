@@ -2,13 +2,9 @@
 
 const Pool = require('pg').Pool;
 require('dotenv').config();
-
+let url = process.env.DATABASE_URL
 const pool = new Pool({
-  user: 'husam',
-  host: 'localhost',
-  database: 'inventory_app',
-  password: '0000',
-  port: 5432,
+  url
 });
 
 module.exports = pool;
