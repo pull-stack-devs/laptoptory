@@ -12,10 +12,7 @@ module.exports = async (req, res, next) =>{
     return;
     }
     let basic = authHeader.pop();
-    //let [username, password] = base64.decode(basic).split(':');
-    let username = 'super-admin';
-    let password = 'admin';
-
+    [username, password] = base64.decode(basic).split(':');
     console.log('before authenticate');
     let auth = await Users.authenticate({ username, password });
     console.log(auth);
