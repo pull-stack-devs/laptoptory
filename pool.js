@@ -1,8 +1,13 @@
 'use strict';
 
 const Pool = require('pg').Pool;
-let connectionString  = process.env.DATABASE_URL;
-const pool = new Pool({ connectionString });
+let connectionString = process.env.DATABASE_URL;
+const pool = new Pool({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 module.exports = pool;
 
