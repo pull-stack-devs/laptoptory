@@ -1,5 +1,4 @@
-module.exports = (err, req, res, next) => {
+module.exports = (err, req, res) => {
     console.log('inside Err Handler', err);
-    res.status(500); // internal server error status code
-    res.json({ error: 'We have an issue we will fix it soon!' });
+    res.status(500).json({ error: 'We have an issue we will fix it soon!' });
   };

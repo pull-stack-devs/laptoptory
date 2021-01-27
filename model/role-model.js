@@ -2,6 +2,7 @@
 
 const pg = require('pg');
 let pool = require('../pool');
+const errorHandler = require('../middleware/500');
 
 class Role {
   constructor() {}
@@ -16,13 +17,13 @@ class Role {
     }
   }
   async read() {
-    let SQL = `SELECT * FROM roles`;
+    let SQL = `SELECT * FROM rolegs`;
     try {
       let { rows } = await pool.query(SQL);
       return rows;
     } catch (err) {
       console.log('err>>>>', err)
-      // errorHandler(err);
+      errorHandler(err);
     }
   }
 
