@@ -8,8 +8,7 @@ const pool = new Pool({
 });
 */
 
-const Pool = require('pg').Pool;
-let connectionString = process.env.DATABASE_URL;
+
 const pool = new Pool({
   connectionString,
   ssl: {
