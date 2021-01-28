@@ -35,3 +35,49 @@ Our system is a web application that will track all the student's or employee's 
 ## Stretch Goals
 ![Stretch Goals](./assets/stretch.PNG)
 
+## Routes
+- POST	/signin
+- POST /signup
+- GET /signout
+- GET/users/approve/all
+- POST /users/approve/:id
+- POST /laptops
+- GET /laptops
+- PUT /laptops
+- DELETE /laptops
+- POST /programs
+- GET /log
+- GET /
+- GET /users
+- POST /users
+- PUT  /users
+- DELETE /users
+- GET /laptops/
+- POST /laptops/
+- PUT /laptops/
+- DELETE /laptops/
+- GET /laptops/search?brand=lenovo
+- GET /laptops/search?availability=true
+- GET /laptops/search?program=
+- GET /programs
+- POST /programs
+- PUT /programs
+- DELETE /programs
+- GET /programs-requirements
+- POST /programs-requirements
+- PUT /programs-requirements
+- DELETE /programs-requirements
+- GET /students
+- POST /students
+- PUT /students
+- DELETE /students
+- GET /students/search?nationality=
+- GET /students/search?status=
+- GET /students/search?program=”id”
+- GET /studentsWithLaptops/search?studentId=
+- GET /studentsWithLaptops/search?laptopSerial=
+- GET /studentsWithLaptops/search?availability=
+- POST students/assignLaptop
+- POST students/returnLaptop
+- https://pull-stack-laptoptory.herokuapp.com
+
