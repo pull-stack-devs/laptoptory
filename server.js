@@ -3,8 +3,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const cors = require('cors');
 const app = express();
 app.use(express.json());
+app.use(cors());
 const laptopRoutes = require('./lib/laptop-routes');
 const programRoutes = require('./lib/porgram-routes');
 const programRequirementsRoutes = require('./lib/program-requirements-routes');
