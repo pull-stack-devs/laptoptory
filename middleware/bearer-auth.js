@@ -8,7 +8,7 @@ async function bearerMiddleware(req, res, next) {
   }
   
   let authHeader = req.headers.authorization.split(' ');
-
+  console.log(req.headers);
   if (authHeader[0] != 'Bearer' || !req.headers.cookie ) {
     next('invalid Header!');
     return;
