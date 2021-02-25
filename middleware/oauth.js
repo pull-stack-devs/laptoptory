@@ -6,7 +6,6 @@ const morgan = require('morgan');
 
 const tokenUrl = 'https://www.linkedin.com/oauth/v2/accessToken'; //post method
 const userUrl = 'https://api.linkedin.com/v2/me'; //get method
-
 const CLIENT_ID = process.env.CLIENT_ID;
 const SECRET_ID = process.env.SECRET_ID;
 
@@ -21,7 +20,7 @@ module.exports = async function (req, res, next) {
   let remoteUser = await getRemoteUser(remoteToken);
 
   console.log('(3) remoteUser.login-----> ', remoteUser.login);
-  let [localToken, localUser] = await getUser(remoteUser);
+  let [localUser, localToken] = await getUser(remoteUser);
   console.log(
     '(4) localUser -----> ',
     localUser,
@@ -78,17 +77,21 @@ async function getUser(userObj) {
     password: 'userObj.password',
     email: 'test@xyz.com',
     name: `${userObj.localizedFirstName} ${userObj.localizedLastName}`,
-    is_accepted: false,
   };
   
   let exist = await users.get(userRecord.username);
   console.log(exist);
-  if (exist.length > 0) {
+  if (exist.length > 0 && exist[0].is_accepted) {
     let token = await users.generateToken(exist[0]);
-    return [token, exist];
-  } else {
+    return [exist, token];
+  } else if(exist.length > 0 && !exist[0].is_accepted){
+    next('invaid login');
+    
+  } else{
     let record = await users.create(userRecord);
-    let token = await users.generateToken(userRecord);
-    return [token, record];
+    return [record, null];
+    // let record = await users.create(userRecord);
+    // let token = await users.generateToken(userRecord);
+    // return [token, record];
   }
 }
