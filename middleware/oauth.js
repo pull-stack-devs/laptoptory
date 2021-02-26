@@ -85,7 +85,7 @@ async function getUser(userObj) {
     let token = await users.generateToken(exist[0]);
     return [exist, token];
   } else if(exist.length > 0 && !exist[0].is_accepted){
-    next('invaid login');
+    return [exist, null];
     
   } else{
     let record = await users.create(userRecord);
