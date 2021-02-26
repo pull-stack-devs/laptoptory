@@ -43,7 +43,7 @@ async function exchangeCodeWithToken(code) {
         content_type: 'application/x-www-form-urlencoded',
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: 'http://localhost:3000/oauth',
+        redirect_uri: 'http://localhost:3000/linkedin',
         client_id: CLIENT_ID,
         client_secret: SECRET_ID,
       });
