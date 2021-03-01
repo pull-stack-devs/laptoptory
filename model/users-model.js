@@ -89,10 +89,11 @@ class User {
       errorHandler(err);
     }
   }
-  async approveUser(id) {
-    let SQL = `UPDATE users SET is_accepted = $1 WHERE id = $2 RETURNING *`;
+  async approveUser(data) {
+    let SQL = `UPDATE users SET is_accepted = $1, role_name=$2, WHERE id = $3 RETURNING *`;
+    let {id, role_name} = data
     try {
-      let { rows } = await pool.query(SQL, [true, id]);
+      let { rows } = await pool.query(SQL, [true, role_name, id]);
       return rows;
     } catch (err) {
       errorHandler(err);
