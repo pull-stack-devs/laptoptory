@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS student, student_laptop, laptops, student_scholarship, scholarships, programs, program_requirements, users, roles;
+DROP TABLE IF EXISTS student_laptop;
 
 CREATE TABLE IF NOT EXISTS programs (
     id SERIAL,
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS student_laptop(
     std_id INTEGER, 
     laptop_id VARCHAR(255),
     CONSTRAINT fk_laptop_id FOREIGN KEY (laptop_id) REFERENCES laptops (serial_no),
-    availability BOOLEAN DEFAULT false
+    availability_student BOOLEAN DEFAULT false
 );
 
 -- CREATE TABLE IF NOT EXISTS student_program (

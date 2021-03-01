@@ -67,6 +67,17 @@ class StudentsLaptops {
       errorHandler(err);
     }
   }
+
+  async joinLaptopStudent(){
+    let SQL = `SELECT * FROM laptops LEFT JOIN student_laptop ON studnet_laptop.laptop_id = laptops.serial_no`;
+    try {
+      let { rows } = await pool.query(SQL);
+      console.log(rows);
+      return rows;
+    } catch (err) {
+      errorHandler(err);
+    }
+  } 
 }
 
 module.exports = new StudentsLaptops();
