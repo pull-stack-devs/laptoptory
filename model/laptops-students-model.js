@@ -69,7 +69,7 @@ class StudentsLaptops {
   }
 
   async joinLaptopStudent(){
-    let SQL = `SELECT * FROM laptops LEFT JOIN student_laptop ON studnet_laptop.laptop_id = laptops.serial_no`;
+    let SQL = `SELECT laptops.*, student_laptop.* FROM laptops LEFT JOIN student_laptop ON studnet_laptop.laptop_id = laptops.serial_no`;
     try {
       let { rows } = await pool.query(SQL);
       console.log(rows);
