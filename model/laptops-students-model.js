@@ -8,7 +8,7 @@ class StudentsLaptops {
 
   async assign(data) {
     let VALUES = [data.std_id, data.laptop_id, data.availability];
-    let SQL = `INSERT INTO student_laptop (std_id, laptop_id, availability) VALUES($1, $2, $3) RETURNING *`;
+    let SQL = `INSERT INTO student_laptop (std_id, laptop_id, availability_student) VALUES($1, $2, $3) RETURNING *`;
 
     try {
       let { rows } = await pool.query(SQL, VALUES);
