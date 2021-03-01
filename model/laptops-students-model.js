@@ -7,7 +7,7 @@ class StudentsLaptops {
   constructor() {}
 
   async assign(data) {
-    let VALUES = [data.std_id, data.laptop_id, data.availability];
+    let VALUES = [data.std_id, data.laptop_id, data.availability_student];
     let SQL = `INSERT INTO student_laptop (std_id, laptop_id, availability_student) VALUES($1, $2, $3) RETURNING *`;
 
     try {
