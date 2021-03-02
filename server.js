@@ -1,11 +1,12 @@
 'use strict';
 
 const express = require('express');
-const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
 app.use(express.json());
 app.use(cors());
 const laptopRoutes = require('./lib/laptop-routes');
@@ -43,44 +44,33 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
-
 const queue = {
-  notifications: {}
+  notifications: {},
 };
 
-app.get(
-  '/notifications/all',
-  bearerMiddleware,
-  authorizeMid('approve'),
-  async (req, res) => {
-    try {
-      // let rows = await users.read();
-      res.status(200).json(queue);
-    } catch (err) {
-      errorHandler(err);
-    }
-  }
-);
+const socketIO = require('socket.io')(server);
 
-
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}.`);
+server.listen(PORT);
+server.on('listening', () => {
+  console.log(`Listening on port:: http://localhost:${PORT}/`);
 });
 
-const io = socketIO(app);
+// app.listen(PORT, () => {
+//   console.log(`App running on port ${PORT}.`);
+// });
 
-io.on('connection', socket=> {
-  console.log("socket: random")
-  socket.on('signup', payload=> {
-      console.log("New User signup!");
-      let id = Math.random();
-      queue.notifications[id] = payload;
-      // socket.broadcast.emit('New user', {payload})
+io.on('connection', (socket) => {
+  console.log('socket: random');
+  socket.on('signup', (payload) => {
+    console.log('New User signup!');
+    let id = Math.random();
+    queue.notifications[id] = payload;
+    // socket.broadcast.emit('New user', {payload})
   });
-
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-    clearInterval(interval);
+  socket.on('notification', (payload) => {
+    socket.broadcast.emit('notification', payload);
+  });
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
   });
 });
