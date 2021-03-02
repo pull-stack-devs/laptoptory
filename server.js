@@ -62,13 +62,13 @@ server.on('listening', () => {
 io.on('connection', (socket) => {
   console.log('socket: random');
 
-  socket.on('superAdminLogin', (payload) => {
-    socket.broadcast.emit('superAdminLogin', queue.notifications);
-  });
+  // socket.on('superAdminLogin', (payload) => {
+  //   socket.broadcast.emit('superAdminLogin', queue.notifications);
+  // });
   socket.on('notification', (payload) => {
     let id = Math.random();
     queue.notifications[id] = payload;
-    // socket.broadcast.emit('notification', queue.notifications);
+    socket.broadcast.emit('superAdminLogin', queue.notifications);
   });
   socket.on('disconnect', () => {
     console.log('Client disconnected');
