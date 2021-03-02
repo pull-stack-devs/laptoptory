@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS program_requirements (
 
 
 CREATE TABLE IF NOT EXISTS student_laptop(
-    id SERIAL,
+    std_lapt_id SERIAL,
     std_id INTEGER, 
     laptop_id VARCHAR(255),
     CONSTRAINT fk_laptop_id FOREIGN KEY (laptop_id) REFERENCES laptops (serial_no),
