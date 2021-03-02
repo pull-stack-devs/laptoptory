@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
-const io = socketIO(app);
 app.use(express.json());
 app.use(cors());
 const laptopRoutes = require('./lib/laptop-routes');
@@ -64,7 +63,7 @@ app.get(
 );
 
 io.on('connection', socket=> {
-  console.log("socket: random");
+  console.log("socket: random")
   socket.on('signup', payload=> {
       console.log("New User signup!");
       let id = Math.random();
@@ -79,7 +78,8 @@ io.on('connection', socket=> {
 });
 
 
-isten(PORT, () => {
+app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
 });
 
+const io = socketIO(app);
