@@ -47,8 +47,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 const queue = {
   notifications: {},
 };
-
-const socketIO = require('socket.io')(server);
+const socketIO = require('socket.io')
+const io = socketIO(server);
 
 server.listen(PORT);
 server.on('listening', () => {
