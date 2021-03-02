@@ -68,9 +68,25 @@ io.on('connection', (socket) => {
     // socket.broadcast.emit('New user', {payload})
   });
   socket.on('notification', (payload) => {
-    socket.broadcast.emit('notification', payload);
+    let id = Math.random();
+    queue.notifications[id] = payload;
+    socket.broadcast.emit('notification', queue.notifications);
   });
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
 });
+
+
+
+
+// socket.on('hello', payload=> {        
+//   console.log("queue server hello!");
+//   let id = Math.random();
+//   queue.hello[id] = payload;
+//   socket.broadcast.emit('hello', {id, payload})    });
+    
+  
+//   socket.on('received', message=> {        
+//     delete queue.hello[message.id];    
+//   });
