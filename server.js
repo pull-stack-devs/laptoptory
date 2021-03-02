@@ -62,6 +62,14 @@ app.get(
   }
 );
 
+
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}.`);
+});
+
+const io = socketIO(app);
+
 io.on('connection', socket=> {
   console.log("socket: random")
   socket.on('signup', payload=> {
@@ -76,10 +84,3 @@ io.on('connection', socket=> {
     clearInterval(interval);
   });
 });
-
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}.`);
-});
-
-const io = socketIO(app);
