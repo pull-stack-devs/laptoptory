@@ -47,7 +47,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const queue = {
   notifications: {},
 };
-const socketIO = require('socket.io')
+const socketIO = require('socket.io');
 const io = socketIO(server);
 
 server.listen(PORT);
@@ -61,32 +61,26 @@ server.on('listening', () => {
 
 io.on('connection', (socket) => {
   console.log('socket: random');
-  socket.on('signup', (payload) => {
-    console.log('New User signup!');
-    let id = Math.random();
-    queue.notifications[id] = payload;
-    // socket.broadcast.emit('New user', {payload})
+
+  socket.on('superAdminLogin', (payload) => {
+    socket.broadcast.emit('superAdminLogin', queue.notifications);
   });
   socket.on('notification', (payload) => {
     let id = Math.random();
     queue.notifications[id] = payload;
-    socket.broadcast.emit('notification', queue.notifications);
+    // socket.broadcast.emit('notification', queue.notifications);
   });
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
 });
 
-
-
-
-// socket.on('hello', payload=> {        
+// socket.on('hello', payload=> {
 //   console.log("queue server hello!");
 //   let id = Math.random();
 //   queue.hello[id] = payload;
 //   socket.broadcast.emit('hello', {id, payload})    });
-    
-  
-//   socket.on('received', message=> {        
-//     delete queue.hello[message.id];    
+
+//   socket.on('received', message=> {
+//     delete queue.hello[message.id];
 //   });
