@@ -35,7 +35,7 @@ class StudentsLaptops {
       data.availability,
       data.id,
     ];
-    let SQL = `UPDATE student_laptop SET std_id = $1, laptop_id = $2 , availability = $3 WHERE id = $4 RETURNING *`;
+    let SQL = `UPDATE student_laptop SET std_id = $1, laptop_id = $2 , availability_student = $3 WHERE id = $4 RETURNING *`;
     try {
       let { rows } = await pool.query(SQL, VALUES);
       return rows;
